@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excel to JSON</title>
+    <link rel="shortcut icon" href="/imgs/logo32.png" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/stylesheets/main.css">
+  </head>
+  <body>
+    <section>
+      <div id="brand">
+        <img id="logo" src="/imgs/logo.png" alt="upc-fixr-logo">
+        <h1>Excel to JSON</h1>
+      </div>
+
+      <form action="/results" method="POST" enctype="multipart/form-data">
+        <label>Upload Excel File:</label>
+        <input type="file" accept=".xlsx" value='' name="file" />
+        <input value="Upload" type="submit" />
+      </form>
+    </section>
+
+  </body>
+</html>
