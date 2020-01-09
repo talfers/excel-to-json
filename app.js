@@ -6,6 +6,7 @@ const path = require('path');
 const {spawn} = require('child_process');
 
 // Setup Static Dir
+app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/public'));
 
 // Multer Storage Config
@@ -25,7 +26,7 @@ const upload = multer({ storage: storage });
 // ROUTES
 // Get Upload Route
 app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/views/upload.html');
+  res.render('upload');
 });
 
 // Post Results Route
@@ -59,12 +60,12 @@ async function runPython(req, res) {
     if(scriptData.errors.length > 0) {
       console.log('THERE WERE ERRORS!');
       console.log(scriptData.errors);
-      res.sendFile(__dirname + '/views/error.html');
+      res.render('error');
     } else {
       console.log("SUCCESS!");
       const freshData = scriptData.output.filter(item => item !== '' || item !== ' ' || item !== null || item !== '\n')
       console.log(freshData);
-      res.sendFile(__dirname + '/views/results.html');
+      res.render('results');
     }
   });
 }
