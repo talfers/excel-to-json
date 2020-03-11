@@ -16,7 +16,10 @@ dictData = {}
 
 # Create lists
 for index, row in df.iterrows():
-    dictData[row['key']] = int(row['value'])
+    if row['key'] in dictData:
+        dictData[row['key']].append(str(row['value']))
+    else:
+        dictData[row['key']] = [str(row['value'])]
 
 # Convert to JSON
 jsonData = json.dumps(dictData)
