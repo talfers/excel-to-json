@@ -14,12 +14,16 @@ df.columns = ['key', 'value']
 # Define lists
 dictData = {}
 
-# Create lists
+# Create 1:1 JSON dict
 for index, row in df.iterrows():
-    if row['key'] in dictData:
-        dictData[row['key']].append(str(row['value']))
-    else:
-        dictData[row['key']] = [str(row['value'])]
+    dictData[str(row['key'])] = str(row['value'])
+
+# Build value list for duplicate keys
+# for index, row in df.iterrows():
+#     if str(row['key']) in dictData.keys():
+#         dictData[str(row['key'])].append(str(row['value']))
+#     else:
+#         dictData[str(row['key'])] = [str(row['value'])]
 
 # Convert to JSON
 jsonData = json.dumps(dictData)
